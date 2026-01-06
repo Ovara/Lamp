@@ -25,6 +25,7 @@ package revxrsal.commands.fabric;
 
 import net.minecraft.server.command.ServerCommandSource;
 import net.minecraft.server.network.ServerPlayerEntity;
+import net.minecraft.util.Identifier;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.NotNull;
 import revxrsal.commands.Lamp;
@@ -35,6 +36,7 @@ import revxrsal.commands.fabric.actor.FabricCommandActor;
 import revxrsal.commands.fabric.annotation.CommandPermission;
 import revxrsal.commands.fabric.exception.FabricExceptionHandler;
 import revxrsal.commands.fabric.hooks.FabricCommandHooks;
+import revxrsal.commands.fabric.parameters.IdentifierParameterType;
 import revxrsal.commands.fabric.parameters.PlayerParameterType;
 import revxrsal.commands.fabric.parameters.WorldParameterType;
 import revxrsal.commands.fabric.sender.FabricPermissionFactory;
@@ -90,6 +92,7 @@ public final class FabricVisitors {
      * <ul>
      *     <li>{@link ServerPlayerEntity}</li>
      *     <li>{@link World}</li>
+     *     <li>{@link Identifier}</li>
      * </ul>
      *
      * @param <A> The actor type
@@ -98,7 +101,8 @@ public final class FabricVisitors {
     public static <A extends FabricCommandActor> @NotNull LampBuilderVisitor<A> fabricParameterTypes() {
         return builder -> builder.parameterTypes()
                 .addParameterTypeLast(ServerPlayerEntity.class, new PlayerParameterType())
-                .addParameterTypeLast(World.class, new WorldParameterType());
+                .addParameterTypeLast(World.class, new WorldParameterType())
+                .addParameterTypeLast(Identifier.class, new IdentifierParameterType());
     }
 
     /**
