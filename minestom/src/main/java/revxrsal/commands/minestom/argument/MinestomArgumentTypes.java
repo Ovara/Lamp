@@ -23,6 +23,7 @@
  */
 package revxrsal.commands.minestom.argument;
 
+import net.kyori.adventure.key.Key;
 import net.kyori.adventure.nbt.BinaryTag;
 import net.kyori.adventure.nbt.CompoundBinaryTag;
 import net.kyori.adventure.text.Component;
@@ -55,7 +56,8 @@ public final class MinestomArgumentTypes {
                 .addTypeLast(Entity.class, node -> {
                     return ArgumentType.Entity(node.name()).singleEntity(true)
                             .map((sender, finder) -> finder.findFirstEntity(sender));
-                });
+                })
+                .addTypeLast(Key.class, node -> ArgumentType.ResourceLocation(node.name()));
     }
 
 }

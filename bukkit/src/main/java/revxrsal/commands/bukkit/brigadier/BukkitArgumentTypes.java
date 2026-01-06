@@ -24,8 +24,8 @@
 package revxrsal.commands.bukkit.brigadier;
 
 import com.mojang.brigadier.arguments.ArgumentType;
+import net.kyori.adventure.key.Key;
 import org.bukkit.Location;
-import org.bukkit.NamespacedKey;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
@@ -68,7 +68,7 @@ public final class BukkitArgumentTypes {
                 .addTypeLast(Player.class, SINGLE_PLAYER)
                 .addTypeLast(Entity.class, SINGLE_ENTITY)
                 .addTypeLast(Location.class, MinecraftArgumentType.BLOCK_POS.get())
-                .addTypeLast(NamespacedKey.class, MinecraftArgumentType.RESOURCE_LOCATION.get())
+                .addTypeLast(Key.class, MinecraftArgumentType.RESOURCE_LOCATION.get())
                 .addTypeFactoryLast((parameter) -> {
                     if (parameter.type() != EntitySelector.class)
                         return null;

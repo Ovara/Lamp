@@ -23,6 +23,7 @@
  */
 package revxrsal.commands.sponge;
 
+import net.kyori.adventure.key.Key;
 import net.kyori.adventure.text.ComponentLike;
 import org.jetbrains.annotations.NotNull;
 import org.spongepowered.api.SystemSubject;
@@ -41,6 +42,7 @@ import revxrsal.commands.sponge.actor.SpongeCommandActor;
 import revxrsal.commands.sponge.annotation.CommandPermission;
 import revxrsal.commands.sponge.exception.SpongeExceptionHandler;
 import revxrsal.commands.sponge.hooks.SpongeCommandHooks;
+import revxrsal.commands.sponge.parameters.KeyParameterType;
 import revxrsal.commands.sponge.parameters.SelectorParameterType;
 import revxrsal.commands.sponge.parameters.ServerPlayerParameterType;
 import revxrsal.commands.sponge.parameters.ServerWorldParameterType;
@@ -119,7 +121,8 @@ public final class SpongeVisitors {
         return builder -> builder.parameterTypes()
                 .addParameterTypeLast(ServerPlayer.class, new ServerPlayerParameterType())
                 .addParameterTypeLast(Selector.class, new SelectorParameterType())
-                .addParameterTypeLast(ServerWorld.class, new ServerWorldParameterType());
+                .addParameterTypeLast(ServerWorld.class, new ServerWorldParameterType())
+                .addParameterTypeLast(Key.class, new KeyParameterType());
     }
 
     /**
